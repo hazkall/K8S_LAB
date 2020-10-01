@@ -114,3 +114,7 @@ EOF
 #adquirir o token
 
 kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')
+
+
+#How to schedule master node running pod/service as a worker node
+kubectl taint nodes --all node-role.kubernetes.io/master-
