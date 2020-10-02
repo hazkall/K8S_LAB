@@ -7,7 +7,7 @@
   <h3 align="center">Kubernetes Stack Config (Single Node Master)</h3>
 </p>
 
-##Stack 
+## Stack 
 * Docker
 * K8S
 * Dashboard
@@ -148,7 +148,7 @@ subjects:
 EOF
 ```
 
-- adquirir o token
+- Adquirir o token
 ```sh
 kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')
 ```
