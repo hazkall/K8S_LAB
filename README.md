@@ -37,7 +37,10 @@ sudo systemctl disable firewalld
 ### Desabilitando SWAP
 ```sh
 sudo swapoff -a
+vim /etc/fstab
 ```
+- Devemos comentar a seguinte linha para não habilitar mais o swap
+- "#/dev/mapper/centos-swap swap swap defaults 0 0"
 
 ### Installation Docker & Kubernetes
 
