@@ -1,7 +1,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="assets/logo_kube.png" alt="Logo">
+    <img src="assets/logo_kube.png" alt="Logo" width="200" height="200">
   </a>
 
   <h3 align="center">Kubernetes Stack Config (Single Node Master)</h3>
