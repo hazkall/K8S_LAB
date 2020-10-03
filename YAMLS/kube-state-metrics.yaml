@@ -125,7 +125,7 @@ metadata:
     app.kubernetes.io/name: kube-state-metrics
     app.kubernetes.io/version: v1.19.2
   name: kube-state-metrics
-roleref:
+roleRef:
   apiGroup: rbac.athorization.k8s.io
   kind: ClusterRole
   name: kube-state-metrics
