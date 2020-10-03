@@ -37,6 +37,7 @@ systemctl restart kubelet
 
 #K8S Cluster Configuration
 kubeadm init --apiserver-advertise-address $(hostname -i)
+
 mkdir -p $HOME/.kube
 cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 chown $(id -u):$(id -g) $HOME/.kube/config
