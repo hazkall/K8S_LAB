@@ -141,13 +141,14 @@ metadata:
     app.kubernetes.io/version: v1.19.2
   name: kube-state-metrics
 roleRef:
-  apiGroup: rbac.athorization.k8s.io
   kind: ClusterRole
   name: kube-state-metrics
+  apiGroup: rbac.authorization.k8s.io
 subjects:
   - kind: ServiceAccount
     name: kube-state-metrics
-    namespace: kube-system
+    namespace: monitoring
+    
 
 
 ---
