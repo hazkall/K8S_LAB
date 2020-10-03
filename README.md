@@ -181,7 +181,7 @@ helm repo update
 helm install my-prom-release bitnami/prometheus-operator
 kubectl patch svc prometheus-svc -n monitoring  -p '{"spec":{"externalIPs":["x.x.x.x"]}}'
 ```
-## Enable kubectl autocompletion (with sudo su)
+## Enable kubectl autocompletion (run shell with sudo su)
 
 ```sh
 echo 'source <(kubectl completion bash)' >>~/.bashrc
