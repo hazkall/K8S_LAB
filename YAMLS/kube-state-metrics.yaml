@@ -147,7 +147,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: kube-state-metrics
-    namespace: monitoring
+    namespace: kube-system
     
 
 
