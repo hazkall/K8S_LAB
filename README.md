@@ -24,6 +24,7 @@ sudo yum clean all
 sudo yum update -y
 sudo yum groupinstall 'Development Tools'
 sudo yum install wget
+sudo yum install bash-completion bash-completion-extras
 ```
 
 ### Desabilitando SELINUX & Firewall
@@ -179,4 +180,10 @@ helm repo add bitnami https://charts.bitnami.com/bitnami
 helm repo update
 helm install my-prom-release bitnami/prometheus-operator
 kubectl patch svc prometheus-svc -n monitoring  -p '{"spec":{"externalIPs":["x.x.x.x"]}}'
+```
+## Enable kubectl autocompletion (with sudo su)
+
+```sh
+echo 'source <(kubectl completion bash)' >>~/.bashrc
+kubectl completion bash >/etc/bash_completion.d/kubectl
 ```
