@@ -185,8 +185,6 @@ spec:
             initialDelaySeconds: 5
             timeoutSeconds: 5
           name: kube-state-metrics
-          nodeSelector:
-            kubernetes.io/os: linux
           ports:
             - containerPort: 8088
               name: http-metrics
@@ -197,7 +195,9 @@ spec:
               path: /
               port: 8089
             initialDelaySeconds: 5
-          serviceAccountName: kube-state-metrics
+      nodeSelector:
+        kubernetes.io/os: linux
+      serviceAccountName: kube-state-metrics
 
 ---
 
