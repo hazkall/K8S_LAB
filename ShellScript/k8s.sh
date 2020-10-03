@@ -5,7 +5,8 @@
 yum clean all
 yum update -y
 yum -y groupinstall 'Development Tools'
-yum -y install wget 
+yum install -y bash-completion bash-completion-extras
+yum install -y wget 
 curl -fsSL https://get.docker.com | bash
 systemctl enable docker
 systemctl start docker
@@ -42,4 +43,6 @@ chown $(id -u):$(id -g) $HOME/.kube/config
 #Network Pod Weaver
 kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
 kubectl taint nodes --all node-role.kubernetes.io/master-
+echo 'source <(kubectl completion bash)' >>~/.bashrc
+kubectl completion bash >/etc/bash_completion.d/kubectl
 
