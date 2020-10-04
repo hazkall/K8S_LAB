@@ -187,3 +187,11 @@ kubectl patch svc prometheus-svc -n monitoring  -p '{"spec":{"externalIPs":["x.x
 echo 'source <(kubectl completion bash)' >>~/.bashrc
 kubectl completion bash >/etc/bash_completion.d/kubectl
 ```
+
+
+### Criando SSL assinado com Let's Encrypt 
+```sh
+sudo yum install epel-release
+sudo yum install certbot
+certbot certonly --standalone -d meudominio.com --staple-ocsp -m email@seudominio.com --agree-tos
+```
