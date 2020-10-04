@@ -110,7 +110,28 @@ kubectl get pods -n kube-system
 
 
 ### Dashboard K8S
+
+### Criando SSL assinado com Let's Encrypt 
+```sh
+sudo yum install epel-release
+sudo yum install certbot
+certbot certonly --standalone -d meudominio.com --staple-ocsp -m email@seudominio.com --agree-tos
+```
+
+### Certificando DashBoard Kubernetes
+- Necessário criar o diretorio /certs e dentro da pasta copiar os certificados com extensão .crt e .key
+```sh
+kubectl create namespace kubernetes-dashboard
+kubectl create secret generic kubernetes-dashboard-certs --from-file=/certs -n kubernetes-dashboard
+```
 - Implantação do DASHBOARD K8S
+- Necessário fazer a seguinte alteração no YAML recomended do DashBoard
+- Substituir --auto-generate-certificate e colocar as seguintes linhas em seu lugar:
+```sh
+  - --tls-cert-file=dashboard.crt
+  - --tls-key-file=dashboard.key
+```
+-Atenção não executar diretamente esse YAML, pois a certificação não irá funcionar sem a substituição acima, causando problemas no deploy do POD
 ```sh
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
 ```
@@ -188,10 +209,3 @@ echo 'source <(kubectl completion bash)' >>~/.bashrc
 kubectl completion bash >/etc/bash_completion.d/kubectl
 ```
 
-
-### Criando SSL assinado com Let's Encrypt 
-```sh
-sudo yum install epel-release
-sudo yum install certbot
-certbot certonly --standalone -d meudominio.com --staple-ocsp -m email@seudominio.com --agree-tos
-```
