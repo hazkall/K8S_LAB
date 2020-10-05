@@ -42,6 +42,18 @@ vim /etc/fstab
 ```
 - Devemos comentar(#) a seguinte linha para não habilitar mais o swap
 - #/dev/mapper/centos-swap swap swap defaults 0 0
+### Configuração de módulos de kernel
+```sh
+sudo vim /etc/modules-load.d/k8s.conf
+```
+-Acrescentar as seguintes linhas de modulos:
+
+  br_netfilter
+  ip_vs
+  ip_vs_rr
+  ip_vs_sh
+  ip_vs_wrr
+  nf_conntrack_ipv4
 
 ### Installation Docker & Kubernetes
 
