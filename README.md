@@ -61,6 +61,8 @@ sudo vim /etc/modules-load.d/k8s.conf
 curl -fsSL https://get.docker.com | bash
 sudo systemctl enable docker
 sudo systemctl start docker
+sudo groupadd docker
+sudo usermod -aG docker $USER
 ```
 
 
