@@ -186,7 +186,7 @@ EOF
 
 - Adquirir o token
 ```sh
-kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')
+kubectl describe secret admin-user-token-lsjgt -n kubernetes-dashboard
 ```
 
 ### Configuração Extra
