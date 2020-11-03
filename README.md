@@ -61,21 +61,6 @@ sudo vim /etc/modules-load.d/k8s.conf
 curl -fsSL https://get.docker.com | bash
 sudo systemctl enable docker
 sudo systemctl start docker
-# cat > /etc/docker/daemon.json <<EOF
-{
-  "exec-opts": ["native.cgroupdriver=systemd"],
-  "log-driver": "json-file",
-  "log-opts": {
-    "max-size": "100m"
-  },
-  "storage-driver": "overlay2",
-  "storage-opts": [
-    "overlay2.override_kernel_check=true"
-  ]
-}
-EOF
-
-sudo mkdir -p /etc/systemd/system/docker.service.d
 sudo systemctl daemon-reload
 sudo systemctl restart docker
 sudo groupadd docker
@@ -113,6 +98,10 @@ Em vim /etc/sysctl.d/k8s.conf
 ```txt
 net.bridge.bridge-nf-call-ip6tables = 1
 net.bridge.bridge-nf-call-iptables = 1
+```
+Configuração Cgroup
+```sh
+sed -i "s/cgroup-driver=systemd/cgroup-driver=cgroupfs/g" /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 ```
 
 - Iniciando K8S
